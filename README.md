@@ -1,2 +1,2 @@
 ## ansible
-<h1> This repo is all about my practises on ansible </h1>
+<h1> This repository contains ansible example playbooks </h1>
