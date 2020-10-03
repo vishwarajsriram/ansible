@@ -1,0 +1,10 @@
+#playbook for creating a directory
+---
+- name: playbook for creating a directory
+  hosts: all
+  #become:
+  tasks:
+  - name: creating a directory
+    file:
+      path: /home/ansadmin/dir1
+      state: directory

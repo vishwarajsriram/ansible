@@ -1,0 +1,15 @@
+#removing apache httpd
+---
+- name: Playbook for uninstalling httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: stop httpd service
+    service:
+        name: httpd
+        state: stopped
+
+  - name: uninstall httpd
+    yum:
+      name: httpd
+      state: removed

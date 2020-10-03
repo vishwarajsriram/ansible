@@ -1,0 +1,8 @@
+#uptime
+---
+- name: playbook for uptime
+  hosts: all
+  become: true
+  tasks:
+  - name: uptime
+    command: uptime
