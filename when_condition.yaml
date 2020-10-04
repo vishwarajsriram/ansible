@@ -1,0 +1,29 @@
+#install apache httpd
+---
+- name: Playbook for installing httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: install httpd
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family == "Redhat"
+
+  - name: start httpd service
+    service:
+        name: httpd
+        state: started
+    when: ansible_os_family == "Redhat"
+
+  - name: install apache2
+    apt:
+      name: apache2
+      state: present #state is optional
+    when: ansible_os_family == "Debian"
+
+  - name: start apache2 service
+    service:
+        name: apache2
+        state: started
+    when: ansible_os_family == "Debian"

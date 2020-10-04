@@ -1,7 +1,7 @@
 #install apache httpd
 ---
 - name: Playbook for installing httpd
-  hosts: amazon
+  hosts: all
   become: true
   tasks:
   - name: install httpd
