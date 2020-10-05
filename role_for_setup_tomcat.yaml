@@ -1,0 +1,7 @@
+#role for insatallation of tomcat
+---
+- name: installing tomcat
+  hosts: all
+  become: true
+  roles:
+  - setup-tomcat
