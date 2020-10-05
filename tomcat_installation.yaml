@@ -1,0 +1,39 @@
+#install tomcat server
+---
+- name: insatllation of tomcat server
+  hosts: all
+  become: true
+  tasks:
+  - name: installing java on rhel
+    yum:
+      name: java
+      state: installed
+    when: ansible_os_family == "RedHat"
+
+  - name: install java on ubuntu
+    apt:
+      name: default-jdk
+      state: present
+    when: ansible_os_family == "Debian"
+
+
+  - name: download tomcat packages
+    get_url:
+      url: http://www.gtlib.gatech.edu/pub/apache/tomcat/tomcat-10/v10.0.0-M8/bin/apache-tomcat-10.0.0-M8.tar.gz
+      dest: /opt
+
+  - name: untar apache module
+    unarchive:
+       src: /opt/apache-tomcat-10.0.0-M8.tar.gz
+       dest: /opt
+       remote_src: yes
+
+  - name: assigning execution permission
+    file:
+      path: /opt/apache-tomcat-10.0.0-M8/bin/startup.sh
+      mode: 0777
+
+  - name: start tomcat services
+    shell: nohup ./startup.sh
+    args:
+      chdir: /opt/apache-tomcat-10.0.0-M8/bin
