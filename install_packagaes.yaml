@@ -1,0 +1,10 @@
+#install packages git
+---
+- name: Playbook for installing packages
+  hosts: amazon
+  become: true
+  tasks:
+  - name: install package
+    yum:
+      name: git
+      state: present

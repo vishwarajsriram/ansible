@@ -1,0 +1,16 @@
+#install apache httpd
+---
+- name: Playbook for installing httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: install httpd
+    yum:
+      name: httpd
+      state: present
+    notify: start httpd service
+  handlers:
+  - name: start httpd service
+    service:
+        name: httpd
+        state: started

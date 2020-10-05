@@ -1,0 +1,14 @@
+#uninstall apache2 on ubuntu server
+---
+- name: Playbook for uninstalling apache
+  hosts: ubuntu
+  become: true
+  tasks:
+  - name: stop apache2 service
+    service:
+          name: apache2
+          state: stopped
+  - name: uninstall apache2
+    apt:
+      name: apache2
+      state: absent

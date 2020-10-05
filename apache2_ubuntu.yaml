@@ -1,0 +1,14 @@
+#install apache2  on ubuntu server
+---
+- name: Playbook for installing apache
+  hosts: ubuntu
+  become: true
+  tasks:
+  - name: install apache2
+    apt:
+      name: apache2
+      state: present #state is optional
+  - name: start apache2 service
+    service:
+        name: apache2
+        state: started

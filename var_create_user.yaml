@@ -1,0 +1,11 @@
+#ansible all -m user -a "name=john" -b
+---
+- name: provision user
+  hosts: all
+  become: true
+  vars_files:
+  - var_user.yaml
+  tasks:
+  - name: creating user {{ user }}
+    user:
+      name: "{{ user }}"

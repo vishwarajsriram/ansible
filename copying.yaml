@@ -1,0 +1,10 @@
+#playbook for copying a file
+---
+- name: playbook for copying a file
+  hosts: all
+  #become:
+  tasks:
+  - name: copying a file
+    copy:
+      src: /opt/ansible
+      dest: /opt/

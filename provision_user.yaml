@@ -1,0 +1,10 @@
+#ansible all -m user -a "name=john" -b
+---
+- name: provision user
+  hosts: all
+  become: true
+
+  tasks:
+  - name: creating user
+    user:
+      name: paul
